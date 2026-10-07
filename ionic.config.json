@@ -1,0 +1,7 @@
+{
+  "name": "Fantic_club",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
