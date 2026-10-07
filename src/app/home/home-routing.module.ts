@@ -6,6 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    children:[
+      {
+        path:'', redirectTo:'explore', pathMatch:'full'
+      },
+      {
+        path:'explore',
+        loadChildren: ()=> import('./tabs/explore/explore.module').then(m => m.ExplorePageModule)
+      }
+    ]
   }
 ];
 

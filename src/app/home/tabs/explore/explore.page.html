@@ -1,0 +1,265 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header">
+      <ion-img [src]="'assets/icon/logo.png'" alt="user" class="logo"></ion-img>
+      <ion-button shape="round" fill="clear">
+        <div class="sets">
+          <ion-icon name="location-outline"></ion-icon>
+          <span>Mumbai</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+      </ion-button>
+      <div class="user-panel">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-avatar class="person">
+          <ion-img [src]="'assets/girl.png'" alt="user"></ion-img>
+        </ion-avatar>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Section Header -->
+  <div class="header-meta ion-margin-bottom">
+    <div class="meta-tags">
+      <ion-badge color="tertiary">⚡ MIAMI NIGHTS • CURATED VIP</ion-badge>
+      <span class="vibe-tiers">⚡ 4 Vibe Tiers</span>
+    </div>
+    <h1 class="main-title">What's the Move Tonight?</h1>
+    <p class="subtitle">Curated table access, bottle service, and private dining reserved instantly.</p>
+  </div>
+
+  <!-- Vibe Filter Chips (Horizontal Scroll) -->
+  <section class="tab-bar">
+    <div class="tags-scroll-container">
+      <ion-button 
+        shape="round" 
+        size="small" 
+        fill="clear" 
+        *ngFor="let tag of tags" 
+        class="chips"
+        [class.active]="selectedTag === tag"
+        (click)="selectTag(tag)">
+        <span>{{ tag }}</span>
+      </ion-button >
+    </div>
+  </section>
+
+  <!-- Cards List -->
+  <div class="card-list ion-margin-top">
+
+    <!-- Card 1: Clubbing (Selected / Active State) -->
+    <ion-card class="vibe-card selected-card" (click)="onclickSelectCard('club')" [class.selected-card]="selectedCard === 'club'">
+      <div class="card-hero-image" style="background-image: url('assets/Clubs/Clubbing.jpg');">
+        <div class="hero-overlay">
+          <div class="hero-header">
+            <ion-chip class="status-chip">
+              <ion-icon name="ellipse" class="dot-icon"></ion-icon>
+              <ion-label>TRENDING TONIGHT</ion-label>
+            </ion-chip>
+            @if(selectedCard === 'club'){
+              <ion-chip class="selected-badge">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-label>SELECTED</ion-label>
+              </ion-chip>
+            }
+          </div>
+          <div class="hero-footer">
+            <div class="category-meta">
+              <span class="sub-category">MEGA-CLUBS & SOUNDSTAGES</span>
+              <h2 class="category-title">Clubbing</h2>
+            </div>
+            <div class="price-box ion-text-end">
+              <span class="price-label">From Door / Tables</span>
+              <span class="price-amount">₨ 5,800 / ₨ 1,45,190</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="card-info-grid">
+          <div class="info-item">
+            <ion-icon name="wine-outline"></ion-icon>
+            <span><strong>46 venues</strong> active</span>
+          </div>
+          <div class="info-item">
+            <ion-icon name="flash-outline"></ion-icon>
+            <span>Top DJs & Pyro Service</span>
+          </div>
+        </div>
+
+        <p class="card-description">
+          Featuring headline residencies at <strong>LIV</strong>, <strong>E11EVEN</strong>, <strong>Club Space</strong> with fast-track entry and hosted VIP table pods.
+        </p>
+
+        <div class="card-footer-actions">
+          <div class="feature-tags">
+            <ion-chip outline class="mini-chip">Disco +16</ion-chip>
+          </div>
+          @if(selectedCard === 'club'){
+            <ion-button color="primary" shape="round" class="action-btn">
+              <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+              Active Choice
+            </ion-button>
+          }@else{
+            <ion-button fill="outline" color="light" shape="round" class="action-btn">
+              <ion-icon name="ellipse-outline" slot="start"></ion-icon>
+              Choose Club
+            </ion-button>
+          }
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Card 2: Lounge & Bar -->
+    <ion-card class="vibe-card" (click)="onclickSelectCard('bar')" [class.selected-card]="selectedCard === 'bar'">
+      <div class="card-hero-image" style="background-image: url('assets/Clubs/Lounge.jpg');">
+        <div class="hero-overlay">
+          <div class="hero-header">
+            <ion-chip class="status-chip">
+              <ion-icon name="martini-outline"></ion-icon>
+              <ion-label>CHIC & VIBEY • SUNSET & LATE</ion-label>
+            </ion-chip>
+            @if(selectedCard === 'bar'){
+              <ion-chip class="selected-badge">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-label>SELECTED</ion-label>
+              </ion-chip>
+            }
+          </div>
+          <div class="hero-footer">
+            <div class="category-meta">
+              <span class="sub-category">SKYLINE PANORAMAS & COCKTAILS</span>
+              <h2 class="category-title">Lounge & Bar</h2>
+            </div>
+            <div class="price-box ion-text-end">
+              <span class="price-label">Minimum Spend</span>
+              <span class="price-amount">Rs 38,718</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="card-info-grid">
+          <div class="info-item">
+            <ion-icon name="business-outline"></ion-icon>
+            <span><strong>34 rooftops</strong> & speakeasies</span>
+          </div>
+          <div class="info-item">
+            <ion-icon name="volume-medium-outline"></ion-icon>
+            <span>Chill Deep House</span>
+          </div>
+        </div>
+
+        <p class="card-description">
+          Elevated terraces and hidden craft lounges including <strong>Sugar</strong>, <strong>Rosa Sky</strong>, <strong>Kiki on the River</strong>, with curated cocktail pairings.
+        </p>
+
+        <div class="card-footer-actions">
+          <div class="feature-tags">
+            <ion-chip outline class="mini-chip">Skyline View</ion-chip>
+            <ion-chip outline class="mini-chip">Dress to Impress</ion-chip>
+          </div>
+          @if(selectedCard === 'bar'){
+            <ion-button color="primary" shape="round" class="action-btn">
+              <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+              Active Choice
+            </ion-button>
+          }@else{
+            <ion-button fill="outline" color="light" shape="round" class="action-btn">
+              <ion-icon name="ellipse-outline" slot="start"></ion-icon>
+              Choose Lounge
+            </ion-button>
+          }
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Card 3: Fine Dining -->
+    <ion-card class="vibe-card" (click)="onclickSelectCard('dining')" [class.selected-card]="selectedCard === 'dining'">
+      <div class="card-hero-image" style="background-image: url('assets/Clubs/Finedining.jpg');">
+        <div class="hero-overlay">
+          <div class="hero-header">
+            <ion-chip class="status-chip">
+              <ion-icon name="restaurant-outline"></ion-icon>
+              <ion-label>MICHELIN & CAVIAR • SUPPER CLUBS</ion-label>
+            </ion-chip>
+            @if(selectedCard === 'dining'){
+              <ion-chip class="selected-badge">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-label>SELECTED</ion-label>
+              </ion-chip>
+            }
+          </div>
+          <div class="hero-footer">
+            <div class="category-meta">
+              <span class="sub-category">LATE NIGHT GASTRONOMY</span>
+              <h2 class="category-title">Fine Dining</h2>
+            </div>
+            <div class="price-box ion-text-end">
+              <span class="price-label">Deposit</span>
+              <span class="price-amount">₨ 14,520 / guest</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="card-info-grid">
+          <div class="info-item">
+            <ion-icon name="star-outline"></ion-icon>
+            <span><strong>22 premier</strong> reservations</span>
+          </div>
+          <div class="info-item">
+            <ion-icon name="time-outline"></ion-icon>
+            <span>Tables until 1:00 AM</span>
+          </div>
+        </div>
+
+        <p class="card-description">
+          Secured prime-time seating at coveted spots like <strong>Carbone</strong>, <strong>Cote Korean Steakhouse</strong>, <strong>Sexy Fish</strong>, with transition to midnight lounge.
+        </p>
+
+        <div class="card-footer-actions">
+          <div class="feature-tags">
+            <ion-chip outline class="mini-chip">Omakase & Steaks</ion-chip>
+            <ion-chip outline class="mini-chip">Private Booths</ion-chip>
+          </div>
+          @if(selectedCard === 'dining'){
+            <ion-button color="primary" shape="round" class="action-btn">
+              <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+              Active Choice
+            </ion-button>
+          }@else{
+            <ion-button fill="outline" color="light" shape="round" class="action-btn">
+              <ion-icon name="ellipse-outline" slot="start"></ion-icon>
+              Choose Dining
+            </ion-button>
+          }
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>
+
+<!-- Sticky Bottom Floating Action Bar -->
+<div class="floating-action-bar ion-padding-horizontal">
+  <div class="bar-content">
+    <div class="current-selection">
+      <ion-icon name="martini-outline" class="selection-icon"></ion-icon>
+      <div class="selection-text">
+        <span class="label">CURRENT...</span>
+        <span class="value">{{selectedCard}}</span>
+      </div>
+    </div>
+    <ion-button color="primary" shape="round" class="continue-btn">
+      Continue to {{selectedCard}}
+      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+    </ion-button>
+  </div>
+</div>
