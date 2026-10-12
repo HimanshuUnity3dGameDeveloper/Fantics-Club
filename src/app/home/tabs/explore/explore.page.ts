@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-explore',
@@ -28,7 +29,9 @@ export class ExplorePage implements OnInit {
   //   }
   // ];
 
-  constructor() { }
+  constructor(
+    private readonly router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -39,5 +42,9 @@ export class ExplorePage implements OnInit {
 
   onclickSelectCard(card: string){
     this.selectedCard = card
+  }
+
+  openCityPage(){
+    this.router.navigate(['/home/city'])
   }
 }

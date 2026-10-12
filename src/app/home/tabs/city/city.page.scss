@@ -1,0 +1,218 @@
+.city-selector-page {
+  --background: #0b0813;
+  color: #ffffff;
+}
+
+.header-section {
+  padding: 8px 4px;
+  
+  .breadcrumb {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    color: #8f8a9e;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  
+  .page-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+  }
+  
+  .page-subtitle {
+    font-size: 12px;
+    color: #a49fb5;
+    line-height: 1.4;
+    margin: 0;
+  }
+}
+
+.search-container {
+  margin-top: 16px;
+  
+  .custom-search {
+    padding: 0;
+    --background: #181423;
+    --color: #fff;
+    --placeholder-color: #6e6782;
+    --border-radius: 14px;
+    --box-shadow: none;
+  }
+  
+  .gps-detect-card {
+    background: #181423;
+    border-radius: 14px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    
+    .gps-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      ion-icon {
+        font-size: 20px;
+        color: #d1b3ff;
+      }
+      
+      .gps-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      
+      .gps-sub {
+        display: block;
+        font-size: 11px;
+        color: #8a839e;
+      }
+    }
+    
+    .instant-lock-badge {
+      background: #793df6;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+  }
+}
+
+.city-card {
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  margin: 18px 0;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  .card-top-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ede2ff;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .selected-badge {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 9px;
+      padding: 4px 8px;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 4px 0;
+  }
+  
+  .neighborhoods {
+    font-size: 11px;
+    color: #d0c7df;
+    margin-bottom: 16px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+    
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 500;
+    }
+  }
+
+  .hotspots-section {
+    margin-bottom: 18px;
+    
+    .hotspots-title {
+      font-size: 9px;
+      letter-spacing: 0.8px;
+      color: #928b9e;
+      display: block;
+      margin-bottom: 4px;
+    }
+    
+    .hotspots-list {
+      font-size: 11px;
+      color: #e6e2f0;
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+
+  .action-btn {
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: none;
+    --box-shadow: none;
+    margin: 0;
+  }
+}
+
+.selected-card {
+  border: 1.5px solid #a879ff;
+}
+
+.sticky-footer-bar {
+  background: #181423;
+  border-radius: 16px;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  .active-destination-info {
+    .label {
+      font-size: 9px;
+      letter-spacing: 0.8px;
+      color: #8a839e;
+      display: block;
+    }
+    .value {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+  
+  .discover-btn {
+    font-size: 12px;
+    font-weight: 600;
+    --background: #d8c4ff;
+    --color: #120e1f;
+    height: 36px;
+    margin: 0;
+  }
+}
+
+.bottom-tabs-toolbar {
+  --background: #120e1f;
+  --border-color: rgba(255, 255, 255, 0.05);
+  
+  .custom-tab-bar {
+    --background: #120e1f;
+    --color: #7b738c;
+    --color-selected: #b892ff;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}

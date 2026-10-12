@@ -1,0 +1,294 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header">
+      <ion-img [src]="'assets/icon/logo.png'" alt="user" class="logo"></ion-img>
+      <ion-button shape="round" fill="clear">
+        <div class="sets">
+          <ion-icon name="location-outline"></ion-icon>
+          <span>Mumbai</span>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+      </ion-button>
+      <div class="user-panel">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-avatar class="person">
+          <ion-img [src]="'assets/girl.png'" alt="user"></ion-img>
+        </ion-avatar>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding city-selector-page">
+  
+  <!-- Top Header & Breadcrumb -->
+  <div class="header-section">
+    <div class="breadcrumb">INDIA NIGHTLIFE RADAR • SELECT DESTINATION</div>
+    <h1 class="page-title">Choose Your City</h1>
+    <p class="page-subtitle">
+      Unlock curated guestlists, VIP tables, microbrewery passes, and late-night supper clubs across India's premier party capitals.
+    </p>
+  </div>
+
+  <!-- Search Bar & GPS Widget -->
+  <div class="search-container">
+    <ion-searchbar placeholder="Search city, airport code, or hotspot (30+)..." mode="ios" class="custom-search"></ion-searchbar>
+    
+    <div class="gps-detect-card">
+      <div class="gps-info">
+        <ion-icon name="navigate-outline"></ion-icon>
+        <div>
+          <span class="gps-label">Detect Current City</span>
+          <span class="gps-sub">Current GPS: Mumbai (BOM)</span>
+        </div>
+      </div>
+      <ion-badge color="tertiary" class="instant-lock-badge">INSTANT LOCK</ion-badge>
+    </div>
+  </div>
+
+  <!-- City Cards List -->
+   <div class="card-list ion-margin-top">
+
+    <!-- Card 1: Mumbai (Selected / Active State) -->
+    <ion-card class="vibe-card selected-card" (click)="onclickSelectCard('mumbai')" [class.selected-card]="selectedCard === 'mumbai'">
+      <div class="card-hero-image" style="background-image: url('assets/city/Mumbai.png');">
+        <div class="hero-overlay">
+          <div class="hero-header">
+            <ion-chip class="status-chip">
+              <ion-icon name="ellipse" class="dot-icon"></ion-icon>
+              <ion-label>🔥 MAXIMUM CITY • PEAK VIBES</ion-label>
+            </ion-chip>
+            @if(selectedCard === 'mumbai'){
+              <ion-chip class="selected-badge">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-label>SELECTED</ion-label>
+              </ion-chip>
+            }
+          </div>
+          <div class="hero-footer">
+            <div class="category-meta">
+              <h2 class="category-title">Mumbai</h2>
+              <span class="sub-category">Bandra • Lower Parel • Juhu • Colaba</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="card-info-grid">
+          <div class="info-item">
+            <span><strong>64 Premier Venues</strong></span>
+          </div>
+          <div class="info-item">
+            <span><strong>70% Booked Tonight</strong></span>
+          </div>
+          <div class="info-item">
+            <span><strong>Avg. ₹1,500 Cover</strong></span>
+          </div>
+        </div>
+
+        <div class="hotspots-section">
+          <span class="hotspots-title">TOP HOTSPOTS TONIGHT</span>
+          <p class="hotspots-list">Dragonfly • Bastiaan • ABH Rooftop • ToyRoom • Dome</p>
+        </div>
+
+         @if(selectedCard === 'mumbai'){
+            <ion-button expand="block" shape="round" color="primary" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Exploring Mumbai
+            </ion-button>
+          }@else{
+            <ion-button expand="block" shape="round" color="light" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Select Mumbai
+            </ion-button>
+          }
+
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Card 2: Banglore  -->
+    <ion-card class="vibe-card selected-card" (click)="onclickSelectCard('banglore')" [class.selected-card]="selectedCard === 'banglore'">
+      <div class="card-hero-image" style="background-image: url('assets/city/Bangluru.png');">
+        <div class="hero-overlay">
+          <div class="hero-header">
+            <ion-chip class="status-chip">
+              <ion-icon name="ellipse" class="dot-icon"></ion-icon>
+              <ion-label>🍻 PUB CAPITAL • 78 CRAFT HUBS</ion-label>
+            </ion-chip>
+            @if(selectedCard === 'banglore'){
+              <ion-chip class="selected-badge">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-label>SELECTED</ion-label>
+              </ion-chip>
+            }
+          </div>
+          <div class="hero-footer">
+            <div class="category-meta">
+              <h2 class="category-title">Bangalore</h2>
+              <span class="sub-category">Indiranagar • Koramangala • Lavelle Road • Whitefield</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="card-info-grid">
+          <div class="info-item">
+            <span><strong>78 Craft Breweries</strong></span>
+          </div>
+          <div class="info-item">
+            <span><strong>85% Booked Tonight</strong></span>
+          </div>
+        </div>
+
+        <div class="hotspots-section">
+          <span class="hotspots-title">TOP HOTSPOTS TONIGHT</span>
+          <p class="hotspots-list">Toh • Mirage • BygBrewski • High Ultra Lounge • Social</p>
+        </div>
+
+         @if(selectedCard === 'banglore'){
+            <ion-button expand="block" shape="round" color="primary" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Exploring Bangalore
+            </ion-button>
+          }@else{
+            <ion-button expand="block" shape="round" color="light" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Select Bangalore
+            </ion-button>
+          }
+
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Card 3: Hyderabad  -->
+    <ion-card class="vibe-card selected-card" (click)="onclickSelectCard('hyderabad')" [class.selected-card]="selectedCard === 'hyderabad'">
+      <div class="card-hero-image" style="background-image: url('assets/city/Hyderabad.png');">
+        <div class="hero-overlay">
+          <div class="hero-header">
+            <ion-chip class="status-chip">
+              <ion-icon name="ellipse" class="dot-icon"></ion-icon>
+              <ion-label>🏆 JUBILEE LUXE • 45 SPOTS</ion-label>
+            </ion-chip>
+            @if(selectedCard === 'hyderabad'){
+              <ion-chip class="selected-badge">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-label>SELECTED</ion-label>
+              </ion-chip>
+            }
+          </div>
+          <div class="hero-footer">
+            <div class="category-meta">
+              <h2 class="category-title">Hyderabad</h2>
+              <span class="sub-category">Jubilee Hills • Banjara Hills • HITECH City • Gachibowli</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="card-info-grid">
+          <div class="info-item">
+            <span><strong>45 Boutique Venues</strong></span>
+          </div>
+          <div class="info-item">
+            <span><strong>67% Booked Tonight</strong></span>
+          </div>
+          <div class="info-item">
+            <span><strong>Lakeview Skylines</strong></span>
+          </div>
+        </div>
+
+        <div class="hotspots-section">
+          <span class="hotspots-title">TOP HOTSPOTS TONIGHT</span>
+          <p class="hotspots-list">Fat Pigeon • Prism Club • One Golf • Zero40 • Broadway</p>
+        </div>
+
+         @if(selectedCard === 'hyderabad'){
+            <ion-button expand="block" shape="round" color="primary" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Exploring Hyderabad
+            </ion-button>
+          }@else{
+            <ion-button expand="block" shape="round" color="light" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Select Hyderabad
+            </ion-button>
+          }
+
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Card 4: Chennai  -->
+    <ion-card class="vibe-card selected-card" (click)="onclickSelectCard('chennai')" [class.selected-card]="selectedCard === 'chennai'">
+      <div class="card-hero-image" style="background-image: url('assets/city/Chennai.png');">
+        <div class="hero-overlay">
+          <div class="hero-header">
+            <ion-chip class="status-chip">
+              <ion-icon name="ellipse" class="dot-icon"></ion-icon>
+              <ion-label>🌊 COASTAL VIBES • 32 SPOTS  </ion-label>
+            </ion-chip>
+            @if(selectedCard === 'chennai'){
+              <ion-chip class="selected-badge">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <ion-label>SELECTED</ion-label>
+              </ion-chip>
+            }
+          </div>
+          <div class="hero-footer">
+            <div class="category-meta">
+              <h2 class="category-title">Chennai</h2>
+              <span class="sub-category">ECR Beachfront • Nungambakkam • Poes Garden • Alwarpet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ion-card-content>
+        <div class="card-info-grid">
+          <div class="info-item">
+            <span><strong>32 Coastal Lounges</strong></span>
+          </div>
+          <div class="info-item">
+            <span><strong>82% Booked Tonight</strong></span>
+          </div>
+          <div class="info-item">
+            <span><strong>Beach Sunset Sessions</strong></span>
+          </div>
+        </div>
+
+        <div class="hotspots-section">
+          <span class="hotspots-title">TOP HOTSPOTS TONIGHT</span>
+          <p class="hotspots-list">Bay 146 • Pasha • Sin & Tonic • Radio Room • Gatsby</p>
+        </div>
+
+         @if(selectedCard === 'chennai'){
+            <ion-button expand="block" shape="round" color="primary" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Exploring Chennai
+            </ion-button>
+          }@else{
+            <ion-button expand="block" shape="round" color="light" class="action-btn">
+              <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+              Select Chennai
+            </ion-button>
+          }
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+  <!-- Sticky Bottom Destination Bar -->
+  <div class="sticky-footer-bar">
+    <div class="active-destination-info">
+      <span class="label">ACTIVE DESTINATION</span>
+      <span class="value">{{selectedCard}}</span>
+    </div>
+    <ion-button shape="round" color="primary" class="discover-btn">
+      Discover Lineups
+      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+    </ion-button>
+  </div>
+
+</ion-content>

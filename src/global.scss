@@ -156,3 +156,174 @@ ion-toolbar{
     height: 40px;
     border-radius: 1px solid #{$bg-card-alt};
 }
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+
+  .logo{        
+      width: 40px;
+      height: 40px;
+  }
+
+  ion-button{
+      background: #34344b;
+      box-shadow: 0 0 15px rgba(173, 91, 255, 0.5);
+      border-radius: 20px;
+      height: 45px;
+
+      ion-icon{
+          font-size: 20px;
+          font-weight: 400;
+      }
+  }
+  .sets{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      
+      text-transform: none;
+      color: white;
+      font-size: 15px;
+      font-weight: 300;
+  }
+
+  .user-panel{
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      ion-icon{
+          font-size: 25px;
+      }
+  }
+}
+
+// Card Styling
+.vibe-card {
+  --background: #14121d;
+  border-radius: 20px;
+  margin: 0 0 20px 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  &.selected-card {
+    border: 1.5px solid #8a56ff;
+    box-shadow: 0 0 15px rgba(173, 91, 255, 0.8);    
+  }
+
+  .card-hero-image {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(20, 18, 29, 0.95));
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-header {
+      display: flex;
+      justify-content: space-between;
+      
+      .status-chip {
+        --background: rgba(0, 0, 0, 0.5);
+        --color: #cccccc;
+        font-size: 0.65rem;
+        height: 24px;
+      }
+      .dot-icon {
+        color: #8a56ff;
+        font-size: 8px;
+        margin-right: 4px;
+      }
+    }
+
+    .hero-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .sub-category {
+        color: #a09cb0;
+        font-size: 0.65rem;
+        letter-spacing: 0.8px;
+      }
+      .category-title {
+        color: #ffffff;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin: 2px 0 0 0;
+      }
+      .price-label {
+        display: block;
+        color: #8c889f;
+        font-size: 0.65rem;
+      }
+      .price-amount {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 1.01rem;
+      }
+    }
+  }
+
+  ion-card-content {
+    padding: 16px;
+
+    .card-info-grid {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 10px;
+      color: #bab5ce;
+      font-size: 0.8rem;
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+    }
+
+    .card-description {
+      color: #8c889f;
+      font-size: 0.85rem;
+      line-height: 1.35;
+      margin-bottom: 16px;
+
+      strong {
+        color: #ffffff;
+      }
+    }
+
+    .card-footer-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .mini-chip {
+        --background: rgba(255, 255, 255, 0.05);
+        --color: #bab5ce;
+        font-size: 0.7rem;
+        height: 28px;
+        margin: 0 4px 0 0;
+      }
+
+      .action-btn {
+        --border-radius: 20px;
+        font-size: 0.85rem;
+        text-transform: none;
+      }
+    }
+  }
+}

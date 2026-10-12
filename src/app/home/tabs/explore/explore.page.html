@@ -252,12 +252,12 @@
   <div class="bar-content">
     <div class="current-selection">
       <ion-icon name="martini-outline" class="selection-icon"></ion-icon>
-      <div class="selection-text">
-        <span class="label">CURRENT...</span>
-        <span class="value">{{selectedCard}}</span>
-      </div>
+      <ion-select label="Select option" label-placement="floating">
+        <ion-select-option value="apple">Stage</ion-select-option>
+        <ion-select-option value="banana">Non Stage</ion-select-option>
+      </ion-select>
     </div>
-    <ion-button color="primary" shape="round" class="continue-btn">
+    <ion-button color="primary" shape="round" class="continue-btn" (click)="openCityPage()">
       Continue to {{selectedCard}}
       <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
     </ion-button>

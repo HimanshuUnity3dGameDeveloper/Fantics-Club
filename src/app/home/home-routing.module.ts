@@ -13,6 +13,10 @@ const routes: Routes = [
       {
         path:'explore',
         loadChildren: ()=> import('./tabs/explore/explore.module').then(m => m.ExplorePageModule)
+      },
+      {
+        path: 'city',
+        loadChildren: () => import('./tabs/city/city.module').then( m => m.CityPageModule)
       }
     ]
   }
