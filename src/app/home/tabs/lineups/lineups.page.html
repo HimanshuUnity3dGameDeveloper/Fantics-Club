@@ -1,0 +1,141 @@
+<ion-header class="ion-no-border header-toolbar">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()" class="action-icon-btn">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <div class="brand-container">
+      <ion-avatar class="brand-logo-avatar">
+        <img [src]="venueLogo" alt="AFTERZ Logo" />
+      </ion-avatar>
+      <div class="brand-text-group">
+        <div class="brand-title-row">
+          <span class="brand-name">AFTERZ</span>
+          <div class="pulse-dot"></div>
+        </div>
+        <button (click)="openLocationSelector()" class="location-btn">
+          <span class="location-text">Miami / South Beach 📍</span>
+          <ion-icon slot="icon-only" name="chevron-down" class="location-chevron"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <ion-buttons slot="end" class="header-end-btns">
+      <ion-button fill="clear" class="notification-btn">
+        <ion-icon name="notifications"></ion-icon>
+        <span class="ping-ring"></span>
+        <span class="static-dot"></span>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/passes-profile" class="profile-btn">
+        <ion-avatar class="person">
+          <img [src]="userAvatar" alt="Profile Avatar" />
+        </ion-avatar>
+        <span class="online-indicator"></span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <!-- Lineup Header & Date Filter Strip -->
+  <div class="lineup-hero-section">
+    <div class="lineup-heading-block">
+      <div class="flex items-center justify-between">
+        <h1 class="lineup-main-title">Tonight's Lineup</h1>
+        <span class="live-events-badge">🔥 14 Clubs Live</span>
+      </div>
+      <p class="lineup-subtitle">Top DJs, rooftop sessions, and exclusive club sets across South Beach</p>
+    </div>
+
+    <!-- Date Filter Pills -->
+    <div class="date-filter-scroll">
+      <button *ngFor="let day of dateFilters" 
+              class="date-pill" 
+              [class.active]="selectedDate === day.id"
+              (click)="selectDate(day.id)">
+        <span class="date-day">{{ day.day }}</span>
+        <span class="date-num">{{ day.date }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Featured Headliner Banner -->
+  <div class="featured-banner-container" routerLink="/venue-detail">
+    <div class="featured-card">
+      <img [src]="featuredArtist.image" alt="Headliner Artist" class="featured-bg-img" />
+      <div class="featured-scrim"></div>
+      <div class="featured-badge-top">
+        <span class="trending-badge">🌟 #1 Trending Set</span>
+        <span class="time-badge">11:00 PM • LIV</span>
+      </div>
+      <div class="featured-content">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="genre-tag">EDM / Progressive</span>
+          <span class="status-live-dot">● Live Tonight</span>
+        </div>
+        <h2 class="featured-artist-name">{{ featuredArtist.name }}</h2>
+        <p class="featured-venue-info">{{ featuredArtist.venue }} • Miami Beach</p>
+        
+        <div class="featured-action-row">
+          <div class="flex items-center gap-1.5">
+            <ion-icon name="flash" class="text-primary"></ion-icon>
+            <span class="text-xs text-on-surface font-semibold">VIP Tables from $1,100</span>
+          </div>
+          <button class="quick-book-btn">Book VIP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Club & Bar Lineup Feed Header -->
+  <div class="tables-section-header">
+    <div class="tables-header-left">
+      <h2 class="tables-main-title">Clubs & Lounge Schedule</h2>
+      <span class="tiers-count-badge">4 Events</span>
+    </div>
+    <span class="tables-header-right">Fast-pass available</span>
+  </div>
+
+  <!-- Events List -->
+  <div class="tier-cards-list">
+    <div *ngFor="let event of lineupEvents" class="tier-card" (click)="openEventDetail(event)">
+      <div class="card-badge-row">
+        <div class="card-badges-left">
+          <span class="badge-energy" [ngClass]="event.badgeColor">{{ event.tag }}</span>
+          <span class="badge-table">{{ event.time }}</span>
+        </div>
+        <span class="booths-left-tag" [ngClass]="{'text-secondary': event.urgency === 'High'}">{{ event.statusText }}</span>
+      </div>
+
+      <div class="card-img-wrapper">
+        <img [src]="event.image" [alt]="event.title" class="card-img" />
+        <div class="card-img-scrim"></div>
+        <div class="view-tag">
+          <ion-icon name="location" class="view-icon"></ion-icon>
+          <span class="view-text">{{ event.location }}</span>
+        </div>
+      </div>
+
+      <div class="card-info-row">
+        <div class="card-titles">
+          <h3 class="card-title-text">{{ event.title }}</h3>
+          <p class="card-desc-text">{{ event.description }}</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-row">
+            <span class="original-price" *ngIf="event.originalPrice">${{ event.originalPrice }}</span>
+            <span class="current-price text-primary">${{ event.price }}</span>
+          </div>
+          <span class="discount-badge primary-bg">{{ event.offer }}</span>
+        </div>
+      </div>
+
+      <div class="perks-grid alt-bg">
+        <div class="perk-chip"><ion-icon name="headset" class="chip-icon"></ion-icon><span class="chip-text">{{ event.headliner }}</span></div>
+        <div class="perk-chip"><ion-icon name="people" class="chip-icon"></ion-icon><span class="chip-text">{{ event.capacity }}</span></div>
+      </div>
+    </div>
+  </div>
+</ion-content>

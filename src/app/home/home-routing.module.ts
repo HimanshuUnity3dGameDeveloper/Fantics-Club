@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: 'table',
         loadChildren: () => import('./tabs/table/table.module').then( m => m.TablePageModule)
+      },
+      {
+        path: 'lineups',
+        loadChildren: () => import('./tabs/lineups/lineups.module').then( m => m.LineupsPageModule)
       }
     ]
   }
