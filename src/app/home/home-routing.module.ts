@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: 'city',
         loadChildren: () => import('./tabs/city/city.module').then( m => m.CityPageModule)
+      },
+      {
+        path: 'table',
+        loadChildren: () => import('./tabs/table/table.module').then( m => m.TablePageModule)
       }
     ]
   }

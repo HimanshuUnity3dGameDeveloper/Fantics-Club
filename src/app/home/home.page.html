@@ -8,6 +8,18 @@
         <ion-icon [name]="activeTab === 'explore' ? 'compass' : 'compass-outline'"></ion-icon>
         <ion-label>Explore</ion-label>
       </ion-tab-button>
+      <ion-tab-button tab="lineUp" (click)="onChangeMode('lineUp')">
+        <ion-icon [name]="activeTab === 'lineUp' ? 'wine' : 'wine-outline'"></ion-icon>
+        <ion-label>LineUp</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="table" (click)="onChangeMode('table')">
+        <ion-icon [name]="activeTab === 'table' ? 'bed' : 'bed-outline'"></ion-icon>
+        <ion-label>Tables</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="passes" (click)="onChangeMode('passes')">
+        <ion-icon [name]="activeTab === 'passes' ? 'ticket' : 'ticket-outline'"></ion-icon>
+        <ion-label>Passes</ion-label>
+      </ion-tab-button>
     </ion-tab-bar>
   </ion-toolbar>
 </ion-footer>

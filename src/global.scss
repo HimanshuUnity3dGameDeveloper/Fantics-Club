@@ -169,6 +169,17 @@ ion-toolbar{
       height: 40px;
   }
 
+  .left{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    h2{
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
   ion-button{
       background: #34344b;
       box-shadow: 0 0 15px rgba(173, 91, 255, 0.5);

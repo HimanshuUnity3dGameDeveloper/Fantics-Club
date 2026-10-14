@@ -1,0 +1,381 @@
+<ion-header class="ion-no-border header-toolbar">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="goBack()" class="action-icon-btn">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <div class="brand-container">
+      <ion-avatar class="brand-logo-avatar">
+        <img [src]="'/assets/icon/logo.png'" alt="AFTERZ Logo" />
+      </ion-avatar>
+      <div class="brand-text-group">
+        <div class="brand-title-row">
+          <span class="brand-name">AFTERZ</span>
+          <div class="pulse-dot"></div>
+        </div>
+        <button (click)="openLocationSelector()" class="location-btn">
+          <span class="location-text">Miami / South Beach 📍</span>
+          <ion-icon name="chevron-down" class="location-chevron"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <ion-buttons slot="end" class="header-end-btns">
+      <ion-button fill="clear" class="notification-btn">
+        <ion-icon name="notifications"></ion-icon>
+        <span class="ping-ring"></span>
+        <span class="static-dot"></span>
+      </ion-button>
+      <ion-button fill="clear" routerLink="/passes-profile" class="profile-btn">
+        <ion-avatar class="person">
+          <img [src]="'/assets/girl.png'" alt="Profile Avatar" />
+        </ion-avatar>
+        <span class="online-indicator"></span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <!-- Cinematic Hero & Floorplan Selector -->
+  <div class="hero-section">
+    <div class="hero-image-wrapper">
+      <img [src]="venueHeroImage" alt="LIV Nightclub Venue Interior" class="hero-img" />
+      <div class="hero-scrim"></div>
+      <div class="hero-radial-glow"></div>
+      
+      <div class="hero-top-actions">
+        <ion-button fill="clear" class="circle-action-btn" (click)="goBack()">
+          <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        </ion-button>
+        <div class="hero-right-actions">
+          <ion-button fill="clear" class="circle-action-btn bookmark-btn" (click)="toggleFavorite()">
+            <ion-icon slot="icon-only" name="bookmark"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" class="circle-action-btn" (click)="shareExperience()">
+            <ion-icon slot="icon-only" name="share-social"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <div class="atmosphere-pill">
+        <span class="ping-dot-container">
+          <span class="ping-anim"></span>
+          <span class="solid-dot error-bg"></span>
+        </span>
+        <span class="atmosphere-text">🔥 92% Booked Tonight • Stage 1 Live</span>
+      </div>
+    </div>
+
+    <div class="venue-info-block">
+      <div class="venue-title-row">
+        <h1 class="venue-heading">LIV Nightclub</h1>
+        <span class="venue-location">Miami Beach</span>
+      </div>
+      <p class="venue-subtext">
+        <ion-icon name="headset" class="headset-icon"></ion-icon>
+        Tonight: <span class="highlight-text">Tiësto & VIP Aerial Dancers</span> • Door 11:00 PM
+      </p>
+    </div>
+
+    <!-- Mini-Floorplan Zone Selector -->
+    <div class="floorplan-container">
+      <div class="floorplan-card">
+        <div class="floorplan-header">
+          <span class="floorplan-label">
+            <ion-icon name="layers" class="label-icon"></ion-icon> Interactive Stage Floorplan
+          </span>
+          <span class="zones-open-badge">4 Zones Open</span>
+        </div>
+
+        <div class="stage-simulator">
+          <div class="dj-booth-bar">
+            <ion-icon name="pulse" class="dj-icon"></ion-icon>
+            <span class="dj-text">Main Stage / DJ Booth</span>
+          </div>
+
+          <div class="zones-grid">
+            <button class="zone-pill" [class.active]="selectedZone === 'front'" (click)="selectZone('front-stage')">
+              <span class="zone-name">Front</span>
+              <span class="zone-sub">8 Left</span>
+            </button>
+            <button class="zone-pill selected-zone" [class.active]="selectedZone === 'mezzanine'" (click)="selectZone('mezzanine')">
+              <span class="zone-name bold">Mezz VIP</span>
+              <span class="zone-sub">Selected</span>
+            </button>
+            <button class="zone-pill" [class.active]="selectedZone === 'terrace'" (click)="selectZone('terrace')">
+              <span class="zone-name">Sky Terrace</span>
+              <span class="zone-sub">Low Stock</span>
+            </button>
+            <button class="zone-pill" [class.active]="selectedZone === 'bar'" (click)="selectZone('solo-bar')">
+              <span class="zone-name">Bar Duo</span>
+              <span class="zone-sub">Fast Entry</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIP Membership Upsell Banner -->
+  <div class="upsell-container">
+    <div class="upsell-card">
+      <div class="upsell-glow"></div>
+      <div class="upsell-top-row">
+        <div class="upsell-title-group">
+          <div class="upsell-heading-row">
+            <ion-icon name="ribbon" class="ribbon-icon"></ion-icon>
+            <span class="upsell-title">AFTERZ Black Pass</span>
+          </div>
+          <p class="upsell-desc">
+            Unlock <span class="primary-highlight">15% Extra Savings</span> & Free +1 Entry at Top 50 Clubs
+          </p>
+        </div>
+        <div class="upsell-pricing-col">
+          <span class="trial-badge">7-Day Free Trial</span>
+          <span class="trial-sub">Then $29/mo</span>
+        </div>
+      </div>
+
+      <div class="perks-row">
+        <div class="perk-item">
+          <span class="perk-title">$0 Fees</span>
+          <span class="perk-sub">Instant VIP Hold</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-title">+1 Guestlist</span>
+          <span class="perk-sub">Skip General Line</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-title">Free Bottle</span>
+          <span class="perk-sub">Tier Upgrade</span>
+        </div>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-left">
+          <ion-toggle [(ngModel)]="isVipMember" (ionChange)="toggleVipDiscount()" color="primary"></ion-toggle>
+          <label class="toggle-label" (click)="isVipMember = !isVipMember; toggleVipDiscount()">
+            Apply Member Discount (-$165)
+          </label>
+        </div>
+        <span class="toggle-price-note" id="vip-price-note">{{ vipPriceNote }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tables Header -->
+  <div class="tables-section-header">
+    <div class="tables-header-left">
+      <h2 class="tables-main-title">Available VIP Tables</h2>
+      <span class="tiers-count-badge">4 Tiers</span>
+    </div>
+    <span class="tables-header-right">All include table host</span>
+  </div>
+
+  <!-- Tier Cards List -->
+  <div class="tier-cards-list">
+    
+    <!-- Tier 2: Mezzanine (Active) -->
+    <div class="tier-card" [class.selected]="currentTier === 'mezzanine'" (click)="selectTier('mezzanine', 1100, 1400, 'Prime Center Mezzanine VIP', '#M-04')">
+      <div class="card-glow-overlay"></div>
+      <div class="card-badge-row">
+        <div class="card-badges-left">
+          <span class="badge-selected">Selected Tier</span>
+          <span class="badge-table">Table #M-04</span>
+        </div>
+        <div class="card-reserved-tag">
+          <ion-icon name="checkmark-circle" class="reserved-icon"></ion-icon>
+          <span class="reserved-text">Reserved For You</span>
+        </div>
+      </div>
+
+      <div class="card-img-wrapper">
+        <img [src]="mezzanineImage" alt="Mezzanine View" class="card-img" />
+        <div class="card-img-scrim"></div>
+        <div class="view-tag">
+          <ion-icon name="image" class="view-icon"></ion-icon>
+          <span class="view-text">Balcony Stage View</span>
+        </div>
+      </div>
+
+      <div class="card-info-row">
+        <div class="card-titles">
+          <h3 class="card-title-text">Prime Center Mezzanine VIP</h3>
+          <p class="card-desc-text">Panoramic view, elevated stage angle</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-row">
+            <span class="original-price">$1,400</span>
+            <span class="current-price text-primary">${{ displayPrices.mezzanine | number }}</span>
+          </div>
+          <span class="discount-badge primary-bg">21% Flash Drop</span>
+        </div>
+      </div>
+
+      <div class="perks-grid">
+        <div class="perk-chip"><ion-icon name="people" class="chip-icon"></ion-icon><span class="chip-text">Up to 6 Guests</span></div>
+        <div class="perk-chip"><ion-icon name="wine" class="chip-icon"></ion-icon><span class="chip-text">2 Premium Bottles + Mixers</span></div>
+        <div class="perk-chip"><ion-icon name="person-circle" class="chip-icon"></ion-icon><span class="chip-text">Dedicated VIP Host</span></div>
+        <div class="perk-chip"><ion-icon name="flash" class="chip-icon"></ion-icon><span class="chip-text">Skip-Line Escort</span></div>
+      </div>
+    </div>
+
+    <!-- Tier 1: Front Stage Booth -->
+    <div class="tier-card" [class.selected]="currentTier === 'stage'" (click)="selectTier('stage', 1750, 2200, 'Dance Floor Front Stage Booth', '#S-01')">
+      <div class="card-badge-row">
+        <div class="card-badges-left">
+          <span class="badge-energy">Ultra High Energy</span>
+          <span class="badge-table">Table #S-01</span>
+        </div>
+        <span class="booths-left-tag">Only 2 Booths Left</span>
+      </div>
+
+      <div class="card-img-wrapper secondary-border">
+        <img [src]="stageImage" alt="Stage Booth View" class="card-img" />
+        <div class="card-img-scrim"></div>
+        <div class="view-tag">
+          <ion-icon name="flash" class="view-icon secondary-color"></ion-icon>
+          <span class="view-text secondary-color">Front Row VIP Booth</span>
+        </div>
+      </div>
+
+      <div class="card-info-row">
+        <div class="card-titles">
+          <h3 class="card-title-text">Dance Floor Front Stage Booth</h3>
+          <p class="card-desc-text">Front row to Tiësto, pulse-point bass</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-row">
+            <span class="original-price">$2,200</span>
+            <span class="current-price">${{ displayPrices.stage | number }}</span>
+          </div>
+          <span class="discount-badge container-bg">20% Early Bird</span>
+        </div>
+      </div>
+
+      <div class="perks-grid alt-bg">
+        <div class="perk-chip"><ion-icon name="people" class="chip-icon secondary-color"></ion-icon><span class="chip-text">Up to 8 Guests</span></div>
+        <div class="perk-chip"><ion-icon name="beer" class="chip-icon secondary-color"></ion-icon><span class="chip-text">3 Dom Pérignon Bottles</span></div>
+        <div class="perk-chip"><ion-icon name="shield-checkmark" class="chip-icon secondary-color"></ion-icon><span class="chip-text">Private Security Ring</span></div>
+        <div class="perk-chip"><ion-icon name="arrow-back" class="chip-icon secondary-color"></ion-icon><span class="chip-text">Confetti Cannon Sparkler</span></div>
+      </div>
+    </div>
+
+    <!-- Tier 3: Rooftop Terrace -->
+    <div class="tier-card" [class.selected]="currentTier === 'terrace'" (click)="selectTier('terrace', 650, 850, 'Rooftop Terrace Banquette', '#T-12')">
+      <div class="card-badge-row">
+        <div class="card-badges-left">
+          <span class="badge-energy">Open Sky Breeze</span>
+          <span class="badge-table">Table #T-12</span>
+        </div>
+        <span class="lounge-vibe-tag">Chilled Lounge Vibe</span>
+      </div>
+
+      <div class="card-img-wrapper outline-border">
+        <img [src]="terraceImage" alt="Terrace View" class="card-img" />
+        <div class="card-img-scrim"></div>
+        <div class="view-tag">
+          <ion-icon name="moon" class="view-icon secondary-color"></ion-icon>
+          <span class="view-text secondary-color">Open Air Skyline View</span>
+        </div>
+      </div>
+
+      <div class="card-info-row">
+        <div class="card-titles">
+          <h3 class="card-title-text">Rooftop Sky Lounge Banquette</h3>
+          <p class="card-desc-text">Lush terrace seating, ocean breeze</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-row">
+            <span class="original-price">$850</span>
+            <span class="current-price">${{ displayPrices.terrace | number }}</span>
+          </div>
+          <span class="discount-badge secondary-bg">23% OFF</span>
+        </div>
+      </div>
+
+      <div class="perks-grid alt-bg">
+        <div class="perk-chip"><ion-icon name="people" class="chip-icon secondary-color"></ion-icon><span class="chip-text">Up to 4 Guests</span></div>
+        <div class="perk-chip"><ion-icon name="wine" class="chip-icon secondary-color"></ion-icon><span class="chip-text">1 Bottle + Craft Cocktails</span></div>
+      </div>
+    </div>
+
+    <!-- Tier 4: Bar High-Top -->
+    <div class="tier-card" [class.selected]="currentTier === 'bar'" (click)="selectTier('bar', 320, 450, 'VIP Bar High-Top Duo', '#B-07')">
+      <div class="card-badge-row">
+        <div class="card-badges-left">
+          <span class="badge-energy">Intimate / Fast Track</span>
+          <span class="badge-table">Table #B-07</span>
+        </div>
+        <span class="lounge-vibe-tag">Expedited Entry</span>
+      </div>
+
+      <div class="card-info-row">
+        <div class="card-titles">
+          <h3 class="card-title-text">Solo / Duo VIP Bar High-Top</h3>
+          <p class="card-desc-text">Reserved barstools right next to main bar</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-row">
+            <span class="original-price">$450</span>
+            <span class="current-price">${{ displayPrices.bar | number }}</span>
+          </div>
+          <span class="discount-badge secondary-bg">28% OFF</span>
+        </div>
+      </div>
+
+      <div class="perks-grid alt-bg">
+        <div class="perk-chip"><ion-icon name="person" class="chip-icon secondary-color"></ion-icon><span class="chip-text">2 Guests Max</span></div>
+        <div class="perk-chip"><ion-icon name="card" class="chip-icon secondary-color"></ion-icon><span class="chip-text">$200 Cocktail Credit</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Floating Booking Action Bar -->
+  <div class="docked-action-bar">
+    <div class="docked-card">
+      <div class="docked-summary-row">
+        <div class="docked-left-col">
+          <span class="docked-tier-label" id="selected-tier-label">{{ currentTitle }} • Table {{ currentTable }}</span>
+          <div class="docked-price-row">
+            <span class="docked-total-price" id="dock-total-price">${{ currentBaseCost | number }}</span>
+            <span class="docked-orig-price" id="dock-original-price">${{ currentOriginalCost | number }}</span>
+            <span class="docked-savings-tag" id="dock-savings-tag">Saved ${{ currentOriginalCost - currentBaseCost }}</span>
+          </div>
+        </div>
+        <div class="guarantee-badge">
+          <ion-icon name="shield-checkmark" class="guarantee-icon"></ion-icon> 100% Guaranteed
+        </div>
+      </div>
+
+      <button class="cta-lock-btn" (click)="lockTable()">
+        <ion-icon name="flash" class="cta-bolt-icon"></ion-icon>
+        <span id="cta-label">Lock Table & Claim VIP Discount</span>
+      </button>
+
+      <div class="payment-badges-row">
+        <span class="payment-item"><ion-icon name="card"></ion-icon> Instant Card</span>
+        <span>•</span>
+        <span class="payment-item"><ion-icon name="phone-portrait"></ion-icon> Apple Pay</span>
+        <span>•</span>
+        <span class="payment-item"><ion-icon name="lock-closed"></ion-icon> 256-bit Encrypted</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Overlay -->
+  <div class="confirmation-toast" [class.show-toast]="showToast" id="booking-toast">
+    <div class="toast-left">
+      <ion-icon name="checkmark-done-circle" class="toast-check-icon"></ion-icon>
+      <div class="toast-text-col">
+        <span class="toast-title">Table Held for 10:00 Mins!</span>
+        <span class="toast-sub">Proceeding to 1-click checkout...</span>
+      </div>
+    </div>
+    <ion-icon name="arrow-forward" class="toast-arrow-icon"></ion-icon>
+  </div>
+</ion-content>
