@@ -6,6 +6,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module.js';
 import { UsersModule } from './users/users.module.js';
 import { CitiesModule } from './cities/cities.module.js';
+import { VenuesModule } from './venues/venues.module.js';
 
 
 @Module({
@@ -23,6 +24,7 @@ import { CitiesModule } from './cities/cities.module.js';
     AuthModule,
     UsersModule,
     CitiesModule,
+    VenuesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
